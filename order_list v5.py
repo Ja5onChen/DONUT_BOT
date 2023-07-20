@@ -18,7 +18,7 @@ order_list =[]
 order_cost = []
 
 #ask for total number of donuts for order
-num_laptops = 0
+num_donuts = 0
 order_donuts()
 while True:
     try:        
