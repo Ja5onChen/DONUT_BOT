@@ -1,3 +1,4 @@
+import sys
 import random
 from random import randint
 #list of random names
@@ -177,10 +178,61 @@ def print_order(del_pick):
 
 
 #ability to cancel or proceed with order
-
+def confirm_cancel():
+    print ("Please Confirm Your Order")
+    print ("To confirm please enter 1 ")
+    print ("To cancel please enter 2")
+    while True:
+        try:
+            confirm = int(input("Please enter a number "))
+            if confirm >= 1 and confirm <= 2:
+                if confirm == 1:
+                    print ("Order Confirmed")
+                    print ("Your Order has been sent to our kitchen")
+                    print ("Your delicious pizza will be with you shortly")
+                    new_exit()
+                    break
+            
+                elif confirm == 2:
+                    print ("Your Order has been Cancelled ")
+                    print ("You can restart the order ot exit the BOT")
+                    new_exit()
+                    break
+            else:
+                print("The number must be 1 or 2")
+        except ValueError:
+            print ("That is no a valid number")
+            print("Please enter 1 or 2")
 
 #option for new order or to exit
-
+def new_exit():
+    print ("Do you want to start another Order or exit?")
+    print ("To start another order please enter 1")
+    print ("To exit the BOT please enter 2")
+    while True:
+        try:
+            confirm = int(input("Please enter a number"))
+            if confirm >= 1 and confirm <= 2:
+                if confirm == 1:
+                    print ("New Order")
+                    order_list.clear()
+                    order_cost.clear()
+                    customer_details.clear() 
+                    main()
+                    break
+            
+                elif confirm == 2:
+                    print ("Exit")
+                    order_list.clear()
+                    order_cost.clear()
+                    customer_details.clear() 
+                    sys.exit()
+                    break
+            else:
+                print("The number must be 1 or 2")    
+        except ValueError:
+            print("That is not a valid number")
+            print("Please enter 1 or 2")
 
 
 #main function
@@ -196,6 +248,8 @@ def main():
     donut_list()
     order_donuts()
     print_order(del_pick)
+    confirm_cancel()
+    
    
 main()
 
