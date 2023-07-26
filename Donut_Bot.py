@@ -41,6 +41,17 @@ def val_int(low, high, question):
             print("That is not a valid number")
             print(f"Please enter a number between {low} and {high} ")
 
+#validates string input to check if they are alphabetical
+def check_string(question):
+    while True:
+        response = input(question)
+        x = response.isalpha()
+        if x == False:
+            print("Input must only contain letters ")
+        else:
+            return response.title()
+
+
 #welcome message with random name
 def welcome():
     '''
@@ -80,17 +91,19 @@ def order_type():
 #click and collect information
 def clickandcollect_info():  
     question = ("Please enter your name ")
-    customer_details['name'] = not_blank(question )
+    customer_details['name'] = check_string(question )
     print(customer_details['name'])
 
     question = ("please enter your phone number ")
     customer_details['phone'] = not_blank(question)
     print(customer_details['phone'])
+    print(customer_details)
+    print()
    
 #delivery information
 def delivery_info():
     question = ("Plese enter your name ")
-    customer_details['name'] = not_blank(question )
+    customer_details['name'] = check_string(question )
     print(customer_details['name'])
 
     question = ("Please enter your phone number ")
@@ -102,13 +115,14 @@ def delivery_info():
     print(customer_details['house'])
 
     question = ("please enter your street name ")
-    customer_details['street'] = not_blank(question)
+    customer_details['street'] = check_string(question)
     print(customer_details['street'])
 
     question = ("please enter your suburb ")
-    customer_details['suburb'] = not_blank(question)
+    customer_details['suburb'] = check_string(question)
     print(customer_details['suburb'])
     print(customer_details)
+    print()
     
 
 
