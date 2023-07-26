@@ -151,34 +151,85 @@ def check_phone(question, PH_LOW, PH_HIGH):
             # Error Print Statement
             print("Please enter a number.")
             # Instruction print statement
-# Welcome message with random name
+            
+            
+# Generates message with a random name
+# from the list called names and prints it out
+# No Parameters
+# No Returns
 def welcome():
-    num = random.randint(0, 9)
-    name = names[num]
+    '''
+    Purpose: To generate a random name form the list and print out
+    a welcome message
+    Parameters: None
+    Returns: None
+    '''
+    num = randint(0, 9)
+    # - setting num to randint which returns
+    #   an integer number from a specified range
+    #   of numbers, 0 to 9 in this case
+    name = (names[num])
+    # - setting name to equal the list of names at the index of
+    #   the random numbers. Each word in a list has an index
+    #   number with the first one starting with 0 unless specified
+    print()
+    # prints blank space
     print("***Welcome to Dream Donut***")
+    # Print statement welcoming user to online shop with help of bot
     print("***My name is", name, "****")
+    # - Print statement which introduces the person
+    #   helping including the random name
     print("*** I will be here to help you order your delicious dream donut ***")
+    # Print statement stating what the program will help you achieve
+    print()
+    # prints blank space
 
-
-# Menu for click and collect or delivery
+# Creates the option to choose either pickup or delivery
+# takes in Low, High and question as parameters when
+# sending to the validate integer input function
+# returns del_pick information at the end of the function
 def order_type():
     del_pick = ""
+     # Sets del_pick to empty
     LOW = 1
     HIGH = 2
     question = f"Enter a number between {LOW} and {HIGH}: "
+    # - The question which asks if the user type in 1 or 2
+    #   depending on if they want delivery or pickup
     print("Is your order for Click and collect or delivery?")
+    # - Print statement which informs customer
+    #   they are going to have to choose between delivery and pickup
     print("For Click and Collect please enter 1")
     print("For Delivery please enter 2")
     delivery = val_int(LOW, HIGH, question)
+    # - sets delivery to equal validate input which sends
+    #   input through the function of validate input which
+    #   checks if the input is an integer and if it fits in
+    #   the numeric boundaries set by low and high
     if delivery == 1:
+        # If Delivery is equal to 1
         print("Click and Collect")
+        # - Prints statement stating Click and collect
+        #   to show you have chosen click and collect
         del_pick = "Click and Collect"
+        # - sets del_pick to equal click and collect
+        #   (will be used in the order print statement function)
         click_and_collect_info()
+        # Opens and runs the function called click and collect info
     else:
+        # if delivery is the other option, 2
         print("Delivery")
-        delivery_info()
+        # - Prints statement stating
+        #   Delivery to show you have chosen Delivery
         del_pick = "Delivery"
+        # - sets del_pick to equal
+        #   delivery (will be used in the order print statement function)
+        delivery_info()
+        # Opens and runs the function called delivery info
     return del_pick
+    # returns del_pick information back to del_pick
+
+
 
 
 # Click and collect information
