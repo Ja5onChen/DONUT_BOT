@@ -289,53 +289,127 @@ def delivery_info():
     # - prints the customers phone number once the answer
     #   is returned from the check phone function
 
-    question = "Please enter your house number: "
+    question = ("Please enter your house number: ")
     customer_details['house'] = not_blank(question)
+    # - customer house number number will equal to validate input
+    #   which sends input through the function of validate input
     print(customer_details['house'])
+    # - prints the customers house number once the answer
+    #   is returned from the validate input function
 
-    question = "Please enter your street name: "
+    question = ("Please enter your street name: ")
+    # question asking for street name
     customer_details['street'] = check_string(question)
+    # - customer street name will equal to check string which sends
+    #   input through the function of check string
     print(customer_details['street'])
-
-    question = "Please enter your suburb: "
+    # - prints the customer street name 
+    #   answer is returned from the check string function
+    question = ("Please enter your suburb: ")
+    # - prints the customer street name 
     customer_details['suburb'] = check_string(question)
+    # - customer street name will equal to check string which sends
+    #   input through the function of check string
     print(customer_details['suburb'])
-    print(customer_details)
+    # - prints the customer suburb once
+    #   answer is returned from the check string function
     print()
+    # prints blank space
 
-#donut list
+# Prints out the list of DOnuts with their name and price.
+# No Parameters
+# No Returns
+
 def donut_list():
     number_donuts = 12
+    # sets the number of donuts to 12 as their are only 12 donuts for sale
     for count in range (number_donuts):
+        # the code will count through 12 times until no more numbers are left
         print("{} {} ${:.2f}" .format(count + 1, donut_names[count], donut_prices[count]))
+        # - formats the list into 3 columns,
+        #   - 1 for the index number,
+        #   - 1 for the names of the pizzas,
+        #   - 1 for the price formatted with a dollar sign to 2 decimal places
+    print()  # prints blank space
 
 
-# Choose total Number of donuts - max 20
-# donut order - from menu - print each donut ordered with cost
+# Choose total number of donuts - max 20
+# Item(s) ordered - from item list - print each ordered item with cost
+# takes num_low, num_high, question as parameters when sending
+# - to validate integer for number of donuts the customer wants
+# takes list_low, list_high, question as parameters when sending
+# - to validate integer for which donut the customer wants
+# No returns
 def order_donuts():
-    # ask for total number of pizzas for order
+    # ask for total number of donuts for order
     num_donuts = 0
+    # sets number of laptops to equal 0
     LOW = 1
+    # constant used in num_donuts
     HIGH = 20
+    # constant used in num_donuts
     MENU_LOW = 1
+    # constant used in donuts_ordered
     MENU_HIGH = 12
+    # constant used in donuts_ordered
     question = (f"Enter a number between {LOW} and {HIGH} ") 
+    # - Question which includes the numeric boundaries the
+    #   number must be in or equal to
     print("How many donuts do you want to order? ")
+     # print statement asking how many donuts the customer would like to order
     num_donuts = val_int(LOW, HIGH, question)
-    #choose donut from menu
+    # - sets num_donuts to equal validate input which sends input
+    #   through the function of validate input which checks if the
+    #   input is an integer and if it fits in the numeric boundaries
+    #   set by low and high
+    
+    # Choose donuts from the list
     for item in range(num_donuts):
+        # - the code will count through the number of donuts chosen,
+        #   meaning it will repeat the same code until there
+        #   are no more numbers left
         while num_donuts > 0:
+            # starts another while loop where num_donnuts is bigger than 0
             print("Please choose your donuts by entering the"
-            "number from the menu ")
+                  "number from the menu ")
+            # - print statement informing customer to choose donut
+            #   by entering number from the list above
             question = (f"Enter a number between {MENU_LOW} and {MENU_HIGH} ") 
+            # - Question which includes the numeric boundaries the
+            #   number must be in or equal to
             donut_ordered =  val_int(MENU_LOW, MENU_HIGH, question)
+            # - sets num_donuts to equal validate input which sends input
+            #   through the function of validate input which checks if the
+            #   input is an integer and if it fits in
+            #   the numeric boundaries set by low and high
             donut_ordered = donut_ordered -1
+            # - sets donuts_ordered equal donuts_ordered - 1 which means
+            #   that every time a number is inputted, the num_donuts
+            #   decreases by 1 till it is 0 and
+            #   the code will stop repeating
             order_list.append(donut_names[donut_ordered])
+            # - appends (sends) the donuts name to the order_list
+            #   which will store the information
             order_cost.append(donut_prices[donut_ordered])
+            # - appends (sends) the donuts prices to the order_cost
+            #   which will store the information
             print("{} ${:.2f}" .format(donut_names[donut_ordered],donut_prices[donut_ordered]))
+            # - prints the information in two columns
+            #   - one for the name of the donut
+            #   - one for the price fromatted by a $ sign
+            #     and 2 decimal places
             num_donuts = num_donuts-1
+            # sets num_donuts equal to num_donuts - 1 which means
+            # that every time a number is inputted, the num_donuts
+            # decreases by 1 till it is 0 and the code will stop repeating
 
-#print order out- including if order is del or pick up and names and price of each pizza - total cost including any delivery charge
+
+# Print order out - including
+# - if the order is pickup or delivery
+# - customer details
+# - names and prices of each item - total cost including any delivery charge
+# Takes del_pick as a parameter
+# No returns
 
 def print_order(del_pick):
     print()
