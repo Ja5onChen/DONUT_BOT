@@ -1,24 +1,27 @@
 import sys
 import random
-from random import randint
-#list of random names
-names = ["Mark", "Pheobe", "Michael", "Denise", "Ellen", "Eric", "Lewis", "Lana", "Moana", "Sally" ]
-#list of donut names
+
+# List of random names
+names = ["Mark", "Phoebe", "Michael", "Denise", "Ellen", "Eric", "Lewis", "Lana", "Moana", "Sally"]
+
+# List of donut names
 donut_names = ['Powdered', 'Jelly', 'Strawberry Frosted', 'Blueberry Glazed',
-               'Chocolate Frosted', 'Bavarian cream ', 'Maple Frosted', 'French Cruller',
+               'Chocolate Frosted', 'Bavarian Cream', 'Maple Frosted', 'French Cruller',
                'Glazed', 'Apple Fritter', 'Chocolate Glazed', 'Boston Kreme']
 
-#list of donut prices
-donut_prices = [3.50,4.00,4.00,3.00,2.50,3.50,5.00,4.50,3.00,2.00,4.50,5.00]
+# List of donut prices
+donut_prices = [3.50, 4.00, 4.00, 3.00, 2.50, 3.50, 5.00, 4.50, 3.00, 2.00, 4.50, 5.00]
 
-#list to store ordered donuts
+# List to store ordered donuts
 order_list = []
-#list to sore donut prices
+
+# List to store donut prices
 order_cost = []
-#Customer details dictionary
+
+# Customer details dictionary
 customer_details = {}
 
-#validates inputs to check they are blank
+# Validates inputs to check they are not blank
 def not_blank(question):
     valid = False
     while not valid:
@@ -26,32 +29,32 @@ def not_blank(question):
         if response != "":
             return response
         else:
-            print ("This cannot be blank")
-            
-# validates inputs to check if they are an integer          
+            print("This cannot be blank")
+
+# Validates inputs to check if they are an integer
 def val_int(low, high, question):
     while True:
         try:
             num = int(input(question))
-            if num >=  low and num <= high:
+            if num >= low and num <= high:
                 return num
             else:
-                print(f"Please enter a number between {low} and {high} ")  
+                print(f"Please enter a number between {low} and {high}")
         except ValueError:
             print("That is not a valid number")
-            print(f"Please enter a number between {low} and {high} ")
+            print(f"Please enter a number between {low} and {high}")
 
-#validates string input to check if they are alphabetical
+# Validates string input to check if they are alphabetical
 def check_string(question):
     while True:
         response = input(question)
         x = response.isalpha()
-        if x == False:
-            print("Input must only contain letters ")
+        if not x:
+            print("Input must only contain letters")
         else:
             return response.title()
 
-#Validates phone number to check if it is between 7 to 10 digits
+# Validates phone number to check if it is between 7 to 10 digits
 def check_phone(question, PH_LOW, PH_HIGH):
     while True:
         try:
@@ -59,7 +62,7 @@ def check_phone(question, PH_LOW, PH_HIGH):
             test_num = num
             count = 0
             while test_num > 0:
-                test_num = test_num//10
+                test_num = test_num // 10
                 count = count + 1
             if count >= PH_LOW and count <= PH_HIGH:
                 return num
@@ -69,81 +72,73 @@ def check_phone(question, PH_LOW, PH_HIGH):
             print("Please enter a number")
 
 
-#welcome message with random name
+# Welcome message with random name
 def welcome():
-    '''
-    purpose: To generate a random name from the list and print out a welcome message
-    Parameters: none
-    Returns: none
-    '''
-num = randint(0,9)
-name = (names[num])
-print("***Welcome to Dream Donut***")
-print("***My name is",name,"****")
-print("*** I will be here to help you order your delicious dream donut ***")
+    num = random.randint(0, 9)
+    name = names[num]
+    print("***Welcome to Dream Donut***")
+    print("***My name is", name, "****")
+    print("*** I will be here to help you order your delicious dream donut ***")
 
 
-#menu for click and collect or delivery
+# Menu for click and collect or delivery
 def order_type():
     del_pick = ""
     LOW = 1
     HIGH = 2
-    question = (f"Enter a number between {LOW} and {HIGH} ") 
-    print ("Is your order for Click and collect or delivery?")
-    print ("For Click and Collect please enter 1")
-    print ("For Delivery please enter 2")
+    question = f"Enter a number between {LOW} and {HIGH}: "
+    print("Is your order for Click and collect or delivery?")
+    print("For Click and Collect please enter 1")
+    print("For Delivery please enter 2")
     delivery = val_int(LOW, HIGH, question)
     if delivery == 1:
-        print ("Click and Collect")
+        print("Click and Collect")
         del_pick = "Click and Collect"
-        clickandcollect_info()
+        click_and_collect_info()
     else:
-        print ("Delivery")
+        print("Delivery")
         delivery_info()
-        del_pick = "delivery"    
+        del_pick = "Delivery"
     return del_pick
-   
-   
 
-#click and collect information
-def clickandcollect_info():  
-    question = ("Please enter your name ")
-    customer_details['name'] = check_string(question )
+
+# Click and collect information
+def click_and_collect_info():
+    question = "Please enter your name: "
+    customer_details['name'] = check_string(question)
     print(customer_details['name'])
 
-    question = ("please enter your phone number ")
-    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
+    question = "Please enter your phone number: "
+    customer_details['phone'] = check_phone(question, 7, 10)
     print(customer_details['phone'])
     print(customer_details)
     print()
-   
-#delivery information
+
+
+# Delivery information
 def delivery_info():
-    question = ("Plese enter your name ")
-    customer_details['name'] = check_string(question )
+    question = "Please enter your name: "
+    customer_details['name'] = check_string(question)
     print(customer_details['name'])
 
-    question = ("Please enter your phone number ")
-    customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
+    question = "Please enter your phone number: "
+    customer_details['phone'] = check_phone(question, 7, 10)
     print(customer_details['phone'])
 
-    question = ("please enter your house number ")
+    question = "Please enter your house number: "
     customer_details['house'] = not_blank(question)
     print(customer_details['house'])
 
-    question = ("please enter your street name ")
+    question = "Please enter your street name: "
     customer_details['street'] = check_string(question)
     print(customer_details['street'])
 
-    question = ("please enter your suburb ")
+    question = "Please enter your suburb: "
     customer_details['suburb'] = check_string(question)
     print(customer_details['suburb'])
     print(customer_details)
     print()
-    
 
-
-   
 #donut list
 def donut_list():
     number_donuts = 12
