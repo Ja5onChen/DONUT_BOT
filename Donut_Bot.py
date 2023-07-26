@@ -412,34 +412,82 @@ def order_donuts():
 # No returns
 
 def print_order(del_pick):
-    print()
+    print() # prints blank space
     total_cost = sum(order_cost)
+    # sets total cost to equal the sum of all the prices of the donuts ordered
     print ("Customer Details:")
+    # prints statement which tells user that customer details are to follow
     if del_pick =="click and collect":
+        # - if del_pick was to equal Click and Collect from the order_type
+        #   function it would print the information required
             print("Your order is for Click and Collect")
+            # print statement stating that the order if for click and collect
             print(f"Customer Name:  {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
+            # - prints customers name and phone number formatted as e.g.
+            #   Customer Name: jason and then below it Customer Phone: 09049950906
     elif del_pick == "delivery":
+        # - if del_pick was to equal delivery from the order_type
+        #   function it would print the information required
             print("Your order is for Delivery")
+            # print statement stating that the order if for delivery
             print(f"Customer Name:  {customer_details['name']} \nCustomer Phone: {customer_details['phone']}  \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+            # - prints customers name, phone number, house number,
+            #   street name, street, suburb
+            #   formatted the same was as the click and collect is
     print()
+    # prints blank space
     print("Your Order Details")
+    # prints statement which tells the user the order details are to follow
     count = 0
+    # sets the count to equal 0
     for item in order_list:
+        # for every donuts that is in the order list
         print("Ordered: {} Cost ${:.2f}" .format(item, order_cost[count]))
+        # - it will print the information in 2 columns
+        #   - The first will have the donut names
+        #   - The second will have the donuts prices
+        #     formatted with a $ sign to 2 decimal places
         count = count+1
+        # - sets count to equal count + 1 so as every donut is printed
+        #   the count will rise till their are no more donuts left
+        #   in the list, and the donuts should all be printed
     print()
+     # prints blank space
     if del_pick == "delivery":
+        # if del_pick is equal to Delivery
         if len(order_list) >= 5:
+            #- if the length of the list is more than 5 index numbers
+            #   then a print statement will print out stating that the
+            #   order is delivered for free
             print("Your order will be delivered to you for free")
+            # - print statement which tells the customer the order
+            #   will be delivered for free
         elif len(order_list) <5:
+            # - if the length of the list is less than 5 index numbers
+            #   then a print statement will print out stating that
+            #   their will be a $9.00 delivery fee
             print("Due to the fact that you have ordered less than 5 items, there is a $9.00 surcharge for delivery")
+            # - print statement which tells the customer that their
+            #   will be a $9.00 delivery fee
             total_cost = total_cost +9
+            # - sets total cost for delivery if the amount of items
+            #   ordered are less than 5 to equal to the total cost + 9
+            #   which is the delivery fee
     print("Total Order Cost")
+    # print statement telling the customer the total cost is to follow
     print(f"${total_cost:.2f}")
+    # - print statement which prints the final cost formatted
+    #   with a $ sign and to 2 decimal places
+    print()
+    # prints blank space
 
 
 
-#ability to cancel or proceed with order
+# Ability to cancel or proceed with order
+# takes in Low, High and question as parameters
+# when sending to the validate integer input function
+# no returns
+
 def confirm_cancel(): 
     LOW = 1
     HIGH = 2
