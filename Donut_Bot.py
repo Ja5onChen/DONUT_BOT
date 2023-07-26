@@ -27,6 +27,20 @@ def not_blank(question):
             return response
         else:
             print ("This cannot be blank")
+            
+# validates inputs to check if they are an integer          
+def val_int(low, high, question):
+    while True:
+        try:
+            num = int(input(question))
+            if num >=  low and num <= high:
+                return num
+            else:
+                print(f"Please enter a number between {low} and {high}")  
+        except ValueError:
+            print("That is not a valid number")
+            print(f"Please enter a number between {low} and {high}")
+
 #welcome message with random name
 def welcome():
     '''
@@ -77,33 +91,25 @@ def delivery_info():
     print(customer_details)
     
 
-
 #menu for click and collect or delivery
 def order_type():
-    print ("Do you want your order delivered or are you collecting it?")
-    print ("For Click and collect enter 1")
-    print ("For delivery enter 2")
-   
-    while True:
-        try:
-            delivery =int(input("Please enter a number "))
-            if delivery >= 1 and delivery <= 2:
-                if delivery == 1:
-                    print ("Click and Collect")
-                    del_pick = "click and collect"
-                    clickandcollect_info()
-                    break
-                elif delivery ==2:
-                    print ("Delivery")
-                    del_pick = "delivery"
-                    delivery_info()
-                    break
-                else:
-                    print("Number must be 1 or 2")
-        except ValueError:
-            print ("That was not a valid input")
-            print ("Please enter 1 or 2")
-    return del_pick 
+    del_pick = ""
+    LOW = 1
+    HIGH = 2
+    question = (f"Enter a number between {LOW} and {HIGH} ") 
+    print ("Is your order for Click and collect or delivery?")
+    print ("For Click and Collect please enter 1")
+    print ("For Delivery please enter 2")
+    delivery = val_int(LOW, HIGH, question)
+    if delivery == 1:
+        print ("Click and Collect")
+        del_pick = "Click and Collect"
+        clickandcollect_info()
+    else:
+        print ("Delivery")
+        delivery_info()
+        del_pick = "delivery"    
+    return del_pick
    
    
 #donut list
@@ -112,40 +118,34 @@ def donut_list():
     for count in range (number_donuts):
         print("{} {} ${:.2f}" .format(count+1,donut_names[count],donut_prices[count]))
 
-#choose total number of donuts -max 20
-#donut order
+
+# Choose total Number of donuts - max 20
+# donut order - from menu - print each donut ordered with cost
 def order_donuts():
+    # ask for total number of pizzas for order
     num_donuts = 0
-    while True:
-        try:        
-            num_donuts = int(input("How many Donuts do you want to order? "))
-            if num_donuts >=1 and num_donuts <= 20:
-                break
-            else:
-                print("Your order must be between 1 and 20")
-        except ValueError:
-            print("That is not a valid number")
-            print("Please enter number between 1 and 20")
-   
-    print(num_donuts)
+    LOW = 1
+    HIGH = 20
+    MENU_LOW = 1
+    MENU_HIGH = 12
+    question = (f"Enter a number between {LOW} and {HIGH}") 
+    print("How many donuts do you want to order? ")
+    num_pizzas = val_int(LOW, HIGH, question)
     #choose donut from menu
-    for item in range(num_donuts):
-        while num_donuts >0:
-            while True:
-                try:
-                    donut_ordered = int(input("Please choose your donuts by entering the number from the menu "))
-                    if donut_ordered >= 1 and donut_ordered <=12:
-                        break
-                    else:
-                        print("your number must be between 1 and 12")
-                except ValueError:
-                    print ("that is not a valid number")
-                    print ("Please enter number between 1 and 12")
+    for item in range(num_pizzas):
+        while num_pizzas > 0:
+            print("Please choose your pizzas by entering the"
+            "number from the menu ")
+            question = (f"Enter a number between {MENU_LOW} and {MENU_HIGH} ") 
+            donut_ordered =  val_int(MENU_LOW, MENU_HIGH, question)
             donut_ordered = donut_ordered-1
             order_list.append(donut_names[donut_ordered])
             order_cost.append(donut_prices[donut_ordered])
             print("{} ${:.2f}" .format(donut_names[donut_ordered],donut_prices[donut_ordered]))
             num_donuts = num_donuts-1
+
+
+
 
 #print order out- including if order is del or pick up and names and price of each pizza - total cost including any delivery charge
 
