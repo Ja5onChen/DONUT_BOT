@@ -230,30 +230,64 @@ def order_type():
     # returns del_pick information back to del_pick
 
 
+# Pickup information - Name and Phone
+# takes in Low, High and question as parameters when sending
+# - to check the string function for name
+# - to check the phone function for phone number
+# No returns
 
-
-# Click and collect information
 def click_and_collect_info():
-    question = "Please enter your name: "
-    customer_details['name'] = check_string(question)
-    print(customer_details['name'])
+    question = ("Please enter your name: ")
+    # question asking for name
 
-    question = "Please enter your phone number: "
+    customer_details['name'] = check_string(question)
+    # - customer name will equal to check string which
+    #   sends input through the function of check string
+    print(customer_details['name'])
+    # - prints the customer name once answer is
+    #   returned from the check string function
+
+    question = ("Please enter your phone number: ")
+    # question asking for phone number
     customer_details['phone'] = check_phone(question, 7, 10)
+     # - customer phone number will equal to check phone
+    #   which sends input through the function of check phone
     print(customer_details['phone'])
+    # - prints the customers phone number once the
+    #   answer is returned from the check phone function
     print(customer_details)
+    # prints all information stored in the customer_details library
     print()
+    # prints blank space
+    
+
+# Delivery information - Name, Address and Phone
+# takes in Low, High and question as parameters when sending
+# - to check the string function for name, street name,
+#   street suffix, and suburb
+# - to check the phone function for phone number
+# - to validate input function for house number
+# No returns
 
 
-# Delivery information
 def delivery_info():
-    question = "Please enter your name: "
+    question = ("Please enter your name: ")
+    # question asking for name
     customer_details['name'] = check_string(question)
+    # - customer name will equal to check string which sends
+    #   input through the function of check string
     print(customer_details['name'])
+    # - prints the customer name once answer is returned
+    #   from the check string function
 
-    question = "Please enter your phone number: "
+    question = ("Please enter your phone number: ")
+     # question asking for phone number
     customer_details['phone'] = check_phone(question, 7, 10)
+    # - customer phone number will equal to check phone which
+    #   sends input through the function of check phone
     print(customer_details['phone'])
+    # - prints the customers phone number once the answer
+    #   is returned from the check phone function
 
     question = "Please enter your house number: "
     customer_details['house'] = not_blank(question)
