@@ -492,42 +492,90 @@ def confirm_cancel():
     LOW = 1
     HIGH = 2
     question = (f"Enter a number between {LOW} and {HIGH} ") 
+    # - The question which asks if the customer type in 1 or 2
+    #   depending on if they want to confirm or cancel the order
     print ("Please Confirm Your Order")
+    # Prints statement asking customer to confirm the order
     print ("To confirm please enter 1")
+    # confirms the order
     print ("To cancel please enter 2")
+    # cancels the order
     confirm = val_int(LOW, HIGH, question)
+    # - sets confirm to equal validate input which sends input through the
+    #   function of validate input which checks if the input is an integer and
+    #   if it fits in the numeric boundaries set by low and high
     if confirm == 1:
+        # if confirm is equal to 1
         print ("Order Confirmed")
+        # print statement telling customer order is confirmed
         print ("Your order has been sent to our kitchen")
+        # print statement telling customer that his order has been sent to the kitchen
         print ("Your delicious donut will be with you shortly")
-        new_exit()                
+        # prints statement telling customer order will be ready soon
+        new_exit()
+        # opens and runs new exit function
+                 
     elif confirm == 2:
+        # if confirm is equal to 2
         print ("Your Order has been Cancelled")
+        # print statement telling customer order is cancelled
         print ("You can restart your order or exit the BOT")
+        # - print statement telling customer they can restart the order
+        #   or exit the bot
         new_exit() 
-#option for new order or to exit
+        # opens and runs new exit function
+        
+        
+# Option for new order or to exit
+# takes in Low, High and question as parameters
+# when sending to the validate integer input function
+# no returns
+
 def new_exit():
     LOW = 1
     HIGH = 2
     question = (f"Enter a number between {LOW} and {HIGH} ") 
+    # - The question which asks if the customer type in 1 or 2
+    #   depending on if they want to start a new order or exit the program
     print ("Do you want to start another Order or exit?")
+    # prints statement asking customer if they want to make a new order or exit
     print ("To start another order please enter 1 ")
+    # prints statement if they want to start new order
     print ("To exit the BOT please enter 2 ")
+    # prints statement if they want to exit
     confirm = val_int(LOW, HIGH, question)
+    # - sets confirm to equal validate input which sends input through the
+    #   function of validate input which checks if the input is an integer and
+    #   if it fits in the numeric boundaries set by low and high
     if confirm == 1:
+        # if confirm is equal to 1
         print ("New Order")
+        # print statement telling customer that a new order will begin
         order_list.clear()
+        # uses clear to clean the order list
         order_cost.clear()
+        # uses clear to clean the order cost
         customer_details.clear() 
+        # clears customer details dictionary
         main()
+        # opens and runs main function
+        
     elif confirm == 2:
+        # if confirm is equal to 2
         print ("Exit")
+        # print statment telling customer that the are exiting the bot
         order_list.clear()
+        # uses clear to clean the order list
         order_cost.clear()
+        # uses clear to clean the order cost
         customer_details.clear() 
+        # clears customer details dictionary
         sys.exit()
+        # uses sys to exit the program
 
-#main function
+# Main Function
+# No Parameters
+# No Returns
 def main():
     '''
     Purpose: To run all functions
@@ -536,11 +584,20 @@ def main():
     Returns: None
     '''
     welcome()
+    # Welcome function
     del_pick = order_type()
+    # - Order type function
+    #   - runs delivery or pickup function depending on choice
     donut_list()
+    # List function
     order_donuts()
+    # Order donuts function
     print_order(del_pick)
+    # Print order function
     confirm_cancel()
+    # - Confirm or Cancel order function
+    #   - runs New Order or Exit function
    
 main()
+# Main Function, runs the full program
 
