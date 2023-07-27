@@ -211,7 +211,7 @@ def order_type():
         print("Click and Collect")
         # - Prints statement stating Click and collect
         #   to show you have chosen click and collect
-        del_pick = "Click and Collect"
+        del_pick = "click and collect"
         # - sets del_pick to equal click and collect
         #   (will be used in the order print statement function)
         click_and_collect_info()
@@ -221,7 +221,7 @@ def order_type():
         print("Delivery")
         # - Prints statement stating
         #   Delivery to show you have chosen Delivery
-        del_pick = "Delivery"
+        del_pick = "delivery"
         # - sets del_pick to equal
         #   delivery (will be used in the order print statement function)
         delivery_info()

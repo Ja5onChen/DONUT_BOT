@@ -193,7 +193,7 @@ def welcome():
 # sending to the validate integer input function
 # returns del_pick information at the end of the function
 def order_type():
-    del_pick = ""
+    del_pick = 0
      # Sets del_pick to empty
     LOW = 1
     HIGH = 2
@@ -215,7 +215,7 @@ def order_type():
         print("Click and Collect")
         # - Prints statement stating Click and collect
         #   to show you have chosen click and collect
-        del_pick = "Click and Collect"
+        del_pick = "click and collect"
         # - sets del_pick to equal click and collect
         #   (will be used in the order print statement function)
         click_and_collect_info()
@@ -225,7 +225,7 @@ def order_type():
         print("Delivery")
         # - Prints statement stating
         #   Delivery to show you have chosen Delivery
-        del_pick = "Delivery"
+        del_pick = "delivery"
         # - sets del_pick to equal
         #   delivery (will be used in the order print statement function)
         delivery_info()
