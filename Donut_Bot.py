@@ -18,7 +18,8 @@ from random import randint
 
 # - List of random names used at the beginning of
 #   the code when starting the program and the welcome message appears
-names = ["Mark", "Phoebe", "Michael", "Denise", "Ellen", "Eric", "Lewis", "Lana", "Moana", "Sally"]
+names = ["Mark", "Phoebe", "Michael", "Denise",
+         "Ellen", "Eric", "Lewis", "Lana", "Moana", "Sally"]
 
 # List of donut names
 #   These donut names are the different products that the
@@ -30,7 +31,8 @@ donut_names = ['Powdered', 'Jelly', 'Strawberry Frosted', 'Blueberry Glazed',
 # - List of donut prices.
 #   These are the prices for the different donuts
 #   the store has to offer for sale
-donut_prices = [3.50, 4.00, 4.00, 3.00, 2.50, 3.50, 5.00, 4.50, 3.00, 2.00, 4.50, 5.00]
+donut_prices = [3.50, 4.00, 4.00, 3.00, 2.50,
+                3.50, 5.00, 4.50, 3.00, 2.00, 4.50, 5.00]
 
 # - list to store ordered donuts. When ordering the donuts,
 #   the program will append all the names of the donuts
@@ -48,6 +50,8 @@ order_cost = []
 customer_details = {}
 
 # Validates inputs to check they are not blank
+
+
 def not_blank(question):
     valid = False
     while not valid:
@@ -56,7 +60,7 @@ def not_blank(question):
             return response
         else:
             print("This cannot be blank")
-            
+
 
 # validates inputs to check if they an integer
 # takes low, high and question as parameters
@@ -77,17 +81,17 @@ def val_int(low, high, question):
             else:
                 # - if num is outside of the numeric boundaries
                 #   an error message
-                    print(f"Please enter a number between {low} and {high}.")
+                print(f"Please enter a number between {low} and {high}.")
         except ValueError:
             # - if the input is not an integer it will go to the
             #   except code and print an error message followed
             #   by an instruction
-            print ("That is not a valid number.")
+            print("That is not a valid number.")
             # Error Print Statement
             print(f"Please enter a number between {low} and {high}.")
             # Instruction print statement
-            
-            
+
+
 # validates string inputs to check if they are a string
 # takes question as parameter
 # returns response in title class if valid
@@ -147,12 +151,12 @@ def check_phone(question, PH_LOW, PH_HIGH):
             # - if the input is not an integer it will go
             #   to the except code and print an error
             #   message followed by an instrction
-            print ("That is not a valid number.")
+            print("That is not a valid number.")
             # Error Print Statement
             print("Please enter a number.")
             # Instruction print statement
-            
-            
+
+
 # Generates message with a random name
 # from the list called names and prints it out
 # No Parameters
@@ -188,9 +192,11 @@ def welcome():
 # takes in Low, High and question as parameters when
 # sending to the validate integer input function
 # returns del_pick information at the end of the function
+
+
 def order_type():
     del_pick = ""
-     # Sets del_pick to empty
+    # Sets del_pick to empty
     LOW = 1
     HIGH = 2
     question = f"Enter a number between {LOW} and {HIGH}: "
@@ -199,6 +205,8 @@ def order_type():
     print("Is your order for Click and collect or delivery?")
     # - Print statement which informs customer
     #   they are going to have to choose between delivery and pickup
+    print("Please note that a $9.00 delivery fee will be added if you have chosen less than 5 items")
+    # print statement which informs customer that if he chooses less then 5 items there will be an extra charge
     print("For Click and Collect please enter 1")
     print("For Delivery please enter 2")
     delivery = val_int(LOW, HIGH, question)
@@ -211,7 +219,7 @@ def order_type():
         print("Click and Collect")
         # - Prints statement stating Click and collect
         #   to show you have chosen click and collect
-        del_pick = "click and collect"
+        del_pick = "Click and Collect"
         # - sets del_pick to equal click and collect
         #   (will be used in the order print statement function)
         click_and_collect_info()
@@ -221,7 +229,7 @@ def order_type():
         print("Delivery")
         # - Prints statement stating
         #   Delivery to show you have chosen Delivery
-        del_pick = "delivery"
+        del_pick = "Delivery"
         # - sets del_pick to equal
         #   delivery (will be used in the order print statement function)
         delivery_info()
@@ -250,7 +258,7 @@ def click_and_collect_info():
     question = ("Please enter your phone number: ")
     # question asking for phone number
     customer_details['phone'] = check_phone(question, 7, 10)
-     # - customer phone number will equal to check phone
+    # - customer phone number will equal to check phone
     #   which sends input through the function of check phone
     print(customer_details['phone'])
     # - prints the customers phone number once the
@@ -259,7 +267,7 @@ def click_and_collect_info():
     # prints all information stored in the customer_details library
     print()
     # prints blank space
-    
+
 
 # Delivery information - Name, Address and Phone
 # takes in Low, High and question as parameters when sending
@@ -281,7 +289,7 @@ def delivery_info():
     #   from the check string function
 
     question = ("Please enter your phone number: ")
-     # question asking for phone number
+    # question asking for phone number
     customer_details['phone'] = check_phone(question, 7, 10)
     # - customer phone number will equal to check phone which
     #   sends input through the function of check phone
@@ -303,10 +311,10 @@ def delivery_info():
     # - customer street name will equal to check string which sends
     #   input through the function of check string
     print(customer_details['street'])
-    # - prints the customer street name 
+    # - prints the customer street name
     #   answer is returned from the check string function
     question = ("Please enter your suburb: ")
-    # - prints the customer street name 
+    # - prints the customer street name
     customer_details['suburb'] = check_string(question)
     # - customer street name will equal to check string which sends
     #   input through the function of check string
@@ -320,12 +328,14 @@ def delivery_info():
 # No Parameters
 # No Returns
 
+
 def donut_list():
     number_donuts = 12
     # sets the number of donuts to 12 as their are only 12 donuts for sale
-    for count in range (number_donuts):
+    for count in range(number_donuts):
         # the code will count through 12 times until no more numbers are left
-        print("{} {} ${:.2f}" .format(count + 1, donut_names[count], donut_prices[count]))
+        print("{} {} ${:.2f}" .format(
+            count + 1, donut_names[count], donut_prices[count]))
         # - formats the list into 3 columns,
         #   - 1 for the index number,
         #   - 1 for the names of the pizzas,
@@ -352,17 +362,17 @@ def order_donuts():
     # constant used in donuts_ordered
     MENU_HIGH = 12
     # constant used in donuts_ordered
-    question = (f"Enter a number between {LOW} and {HIGH} ") 
+    question = (f"Enter a number between {LOW} and {HIGH} ")
     # - Question which includes the numeric boundaries the
     #   number must be in or equal to
     print("How many donuts do you want to order? ")
-     # print statement asking how many donuts the customer would like to order
+    # print statement asking how many donuts the customer would like to order
     num_donuts = val_int(LOW, HIGH, question)
     # - sets num_donuts to equal validate input which sends input
     #   through the function of validate input which checks if the
     #   input is an integer and if it fits in the numeric boundaries
     #   set by low and high
-    
+
     # Choose donuts from the list
     for item in range(num_donuts):
         # - the code will count through the number of donuts chosen,
@@ -374,15 +384,15 @@ def order_donuts():
                   "number from the menu ")
             # - print statement informing customer to choose donut
             #   by entering number from the list above
-            question = (f"Enter a number between {MENU_LOW} and {MENU_HIGH} ") 
+            question = (f"Enter a number between {MENU_LOW} and {MENU_HIGH} ")
             # - Question which includes the numeric boundaries the
             #   number must be in or equal to
-            donut_ordered =  val_int(MENU_LOW, MENU_HIGH, question)
+            donut_ordered = val_int(MENU_LOW, MENU_HIGH, question)
             # - sets num_donuts to equal validate input which sends input
             #   through the function of validate input which checks if the
             #   input is an integer and if it fits in
             #   the numeric boundaries set by low and high
-            donut_ordered = donut_ordered -1
+            donut_ordered = donut_ordered - 1
             # - sets donuts_ordered equal donuts_ordered - 1 which means
             #   that every time a number is inputted, the num_donuts
             #   decreases by 1 till it is 0 and
@@ -393,7 +403,8 @@ def order_donuts():
             order_cost.append(donut_prices[donut_ordered])
             # - appends (sends) the donuts prices to the order_cost
             #   which will store the information
-            print("{} ${:.2f}" .format(donut_names[donut_ordered],donut_prices[donut_ordered]))
+            print("{} ${:.2f}" .format(
+                donut_names[donut_ordered], donut_prices[donut_ordered]))
             # - prints the information in two columns
             #   - one for the name of the donut
             #   - one for the price fromatted by a $ sign
@@ -402,6 +413,8 @@ def order_donuts():
             # sets num_donuts equal to num_donuts - 1 which means
             # that every time a number is inputted, the num_donuts
             # decreases by 1 till it is 0 and the code will stop repeating
+            print()
+            # prints blank space
 
 
 # Print order out - including
@@ -412,28 +425,30 @@ def order_donuts():
 # No returns
 
 def print_order(del_pick):
-    print() # prints blank space
+    print()  # prints blank space
     total_cost = sum(order_cost)
     # sets total cost to equal the sum of all the prices of the donuts ordered
-    print ("Customer Details:")
+    print("Customer Details:")
     # prints statement which tells user that customer details are to follow
-    if del_pick =="click and collect":
+    if del_pick == "click and collect":
         # - if del_pick was to equal Click and Collect from the order_type
         #   function it would print the information required
-            print("Your order is for Click and Collect")
-            # print statement stating that the order if for click and collect
-            print(f"Customer Name:  {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
-            # - prints customers name and phone number formatted as e.g.
-            #   Customer Name: jason and then below it Customer Phone: 09049950906
+        print("Your order is for Click and Collect")
+        # print statement stating that the order if for click and collect
+        print(
+            f"Customer Name:  {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
+        # - prints customers name and phone number formatted as e.g.
+        #   Customer Name: jason and then below it Customer Phone: 09049950906
     elif del_pick == "delivery":
         # - if del_pick was to equal delivery from the order_type
         #   function it would print the information required
-            print("Your order is for Delivery")
-            # print statement stating that the order if for delivery
-            print(f"Customer Name:  {customer_details['name']} \nCustomer Phone: {customer_details['phone']}  \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
-            # - prints customers name, phone number, house number,
-            #   street name, street, suburb
-            #   formatted the same was as the click and collect is
+        print("Your order is for Delivery")
+        # print statement stating that the order if for delivery
+        print(
+            f"Customer Name:  {customer_details['name']} \nCustomer Phone: {customer_details['phone']}  \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+        # - prints customers name, phone number, house number,
+        #   street name, street, suburb
+        #   formatted the same was as the click and collect is
     print()
     # prints blank space
     print("Your Order Details")
@@ -452,24 +467,24 @@ def print_order(del_pick):
         #   the count will rise till their are no more donuts left
         #   in the list, and the donuts should all be printed
     print()
-     # prints blank space
-    if del_pick == "delivery":
+    # prints blank space
+    if del_pick.lower() == "delivery":
         # if del_pick is equal to Delivery
         if len(order_list) >= 5:
-            #- if the length of the list is more than 5 index numbers
+            # - if the length of the list is more than 5 index numbers
             #   then a print statement will print out stating that the
             #   order is delivered for free
             print("Your order will be delivered to you for free")
             # - print statement which tells the customer the order
             #   will be delivered for free
-        elif len(order_list) <5:
+        elif len(order_list) < 5:
             # - if the length of the list is less than 5 index numbers
             #   then a print statement will print out stating that
             #   their will be a $9.00 delivery fee
             print("Due to the fact that you have ordered less than 5 items, there is a $9.00 surcharge for delivery")
             # - print statement which tells the customer that their
             #   will be a $9.00 delivery fee
-            total_cost = total_cost +9
+            total_cost = total_cost + 9
             # - sets total cost for delivery if the amount of items
             #   ordered are less than 5 to equal to the total cost + 9
             #   which is the delivery fee
@@ -482,23 +497,22 @@ def print_order(del_pick):
     # prints blank space
 
 
-
 # Ability to cancel or proceed with order
 # takes in Low, High and question as parameters
 # when sending to the validate integer input function
 # no returns
 
-def confirm_cancel(): 
+def confirm_cancel():
     LOW = 1
     HIGH = 2
-    question = (f"Enter a number between {LOW} and {HIGH} ") 
+    question = (f"Enter a number between {LOW} and {HIGH} ")
     # - The question which asks if the customer type in 1 or 2
     #   depending on if they want to confirm or cancel the order
-    print ("Please Confirm Your Order")
+    print("Please Confirm Your Order")
     # Prints statement asking customer to confirm the order
-    print ("To confirm please enter 1")
+    print("To confirm please enter 1")
     # confirms the order
-    print ("To cancel please enter 2")
+    print("To cancel please enter 2")
     # cancels the order
     confirm = val_int(LOW, HIGH, question)
     # - sets confirm to equal validate input which sends input through the
@@ -506,26 +520,26 @@ def confirm_cancel():
     #   if it fits in the numeric boundaries set by low and high
     if confirm == 1:
         # if confirm is equal to 1
-        print ("Order Confirmed")
+        print("Order Confirmed")
         # print statement telling customer order is confirmed
-        print ("Your order has been sent to our kitchen")
+        print("Your order has been sent to our kitchen")
         # print statement telling customer that his order has been sent to the kitchen
-        print ("Your delicious donut will be with you shortly")
+        print("Your delicious donut will be with you shortly")
         # prints statement telling customer order will be ready soon
         new_exit()
         # opens and runs new exit function
-                 
+
     elif confirm == 2:
         # if confirm is equal to 2
-        print ("Your Order has been Cancelled")
+        print("Your Order has been Cancelled")
         # print statement telling customer order is cancelled
-        print ("You can restart your order or exit the BOT")
+        print("You can restart your order or exit the BOT")
         # - print statement telling customer they can restart the order
         #   or exit the bot
-        new_exit() 
+        new_exit()
         # opens and runs new exit function
-        
-        
+
+
 # Option for new order or to exit
 # takes in Low, High and question as parameters
 # when sending to the validate integer input function
@@ -534,14 +548,14 @@ def confirm_cancel():
 def new_exit():
     LOW = 1
     HIGH = 2
-    question = (f"Enter a number between {LOW} and {HIGH} ") 
+    question = (f"Enter a number between {LOW} and {HIGH} ")
     # - The question which asks if the customer type in 1 or 2
     #   depending on if they want to start a new order or exit the program
-    print ("Do you want to start another Order or exit?")
+    print("Do you want to start another order or exit?")
     # prints statement asking customer if they want to make a new order or exit
-    print ("To start another order please enter 1 ")
+    print("To start another order please enter 1 ")
     # prints statement if they want to start new order
-    print ("To exit the BOT please enter 2 ")
+    print("To exit the BOT please enter 2 ")
     # prints statement if they want to exit
     confirm = val_int(LOW, HIGH, question)
     # - sets confirm to equal validate input which sends input through the
@@ -549,26 +563,26 @@ def new_exit():
     #   if it fits in the numeric boundaries set by low and high
     if confirm == 1:
         # if confirm is equal to 1
-        print ("New Order")
+        print("New Order")
         # print statement telling customer that a new order will begin
         order_list.clear()
         # uses clear to clean the order list
         order_cost.clear()
         # uses clear to clean the order cost
-        customer_details.clear() 
+        customer_details.clear()
         # clears customer details dictionary
         main()
         # opens and runs main function
-        
+
     elif confirm == 2:
         # if confirm is equal to 2
-        print ("Exit")
+        print("Exit")
         # print statment telling customer that the are exiting the bot
         order_list.clear()
         # uses clear to clean the order list
         order_cost.clear()
         # uses clear to clean the order cost
-        customer_details.clear() 
+        customer_details.clear()
         # clears customer details dictionary
         sys.exit()
         # uses sys to exit the program
@@ -576,6 +590,8 @@ def new_exit():
 # Main Function
 # No Parameters
 # No Returns
+
+
 def main():
     '''
     Purpose: To run all functions
@@ -597,7 +613,7 @@ def main():
     confirm_cancel()
     # - Confirm or Cancel order function
     #   - runs New Order or Exit function
-   
+
+
 main()
 # Main Function, runs the full program
-
